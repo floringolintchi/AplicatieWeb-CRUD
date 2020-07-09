@@ -9,23 +9,21 @@
 <body>
 <div class="container">
     <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
-    <div th:if="${not #lists.isEmpty(products)}">
-        <h2>Product List</h2>
+    <div th:if="${not #lists.isEmpty(clients)}">
+        <h2>Client List</h2>
         <table class="table table-striped">
             <tr>
-                <th>Id</th>
-                <th>Product Id</th>
+                <th>Client Id</th>
                 <th>Name</th>
-                <th>Price</th>
+                <th>Address</th>
                 <th>View</th>
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
-            <tr th:each="product : ${products}">
-                <td th:text="${product.id}"><a href="/product/${product.id}">Id</a></td>
-                <td th:text="${product.productId}">Product Id</td>
-                <td th:text="${product.name}">Default value instead of name</td>
-                <td th:text="${product.price}">price</td>
+            <tr th:each="client : ${clients}">
+                <td th:text="${client.id}"><a href="/clients/${client.clientId}">Id</a></td>
+                <td th:text="${client.name}">Client name</td>
+                <td th:text="${client.address}">address</td>
                 <td><a th:href="${ '/product/' + product.id}">View</a></td>
                 <td><a th:href="${'/product/edit/' + product.id}">Edit</a></td>
                 <td><a th:href="${'/product/delete/' + product.id}">Delete</a></td>
@@ -33,8 +31,8 @@
         </table>
 
     </div>
-    <div th:if="${#lists.isEmpty(products)}">
-        <p>No products</p>
+    <div th:if="${#lists.isEmpty(clients)}">
+        <p>No clients</p>
     </div>
 </div>
 

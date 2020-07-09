@@ -1,7 +1,7 @@
-package com.ensat.controllers;
+package com.costache.crud.controllers;
 
-import com.ensat.entities.Product;
-import com.ensat.services.ProductService;
+import com.costache.crud.entities.Product;
+import com.costache.crud.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,12 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class ProductController {
 
-    private ProductService productService;
-
-    @Autowired
-    public void setProductService(ProductService productService) {
-        this.productService = productService;
-    }
+    @Autowired private ProductService productService;
 
     /**
      * List all products.
@@ -42,14 +37,14 @@ public class ProductController {
      * @param model
      * @return
      */
-    @RequestMapping("product/{id}")
+    @RequestMapping("products/{id}")
     public String showProduct(@PathVariable Integer id, Model model) {
         model.addAttribute("product", productService.getProductById(id));
         return "productshow";
     }
 
     // Afficher le formulaire de modification du Product
-    @RequestMapping("product/edit/{id}")
+    @RequestMapping("products/edit/{id}")
     public String edit(@PathVariable Integer id, Model model) {
         model.addAttribute("product", productService.getProductById(id));
         return "productform";
@@ -61,7 +56,7 @@ public class ProductController {
      * @param model
      * @return
      */
-    @RequestMapping("product/new")
+    @RequestMapping("products/new")
     public String newProduct(Model model) {
         model.addAttribute("product", new Product());
         return "productform";
@@ -73,10 +68,10 @@ public class ProductController {
      * @param product
      * @return
      */
-    @RequestMapping(value = "product", method = RequestMethod.POST)
+    @RequestMapping(value = "products", method = RequestMethod.POST)
     public String saveProduct(Product product) {
         productService.saveProduct(product);
-        return "redirect:/product/" + product.getId();
+        return "redirect:/products/" + product.getId();
     }
 
     /**
@@ -85,7 +80,7 @@ public class ProductController {
      * @param id
      * @return
      */
-    @RequestMapping("product/delete/{id}")
+    @RequestMapping("products/delete/{id}")
     public String delete(@PathVariable Integer id) {
         productService.deleteProduct(id);
         return "redirect:/products";

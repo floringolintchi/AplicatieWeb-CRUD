@@ -1,6 +1,6 @@
-package com.ensat.repositories;
+package com.costache.crud.repositories;
 
-import com.ensat.entities.Product;
+import com.costache.crud.entities.Product;
 import org.springframework.data.repository.CrudRepository;
 
 public interface ProductRepository extends CrudRepository<Product, Integer> {

@@ -1,6 +1,6 @@
-package com.ensat.services;
+package com.costache.crud.services;
 
-import com.ensat.entities.Product;
+import com.costache.crud.entities.Product;
 
 public interface ProductService {
 
