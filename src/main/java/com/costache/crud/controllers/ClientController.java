@@ -60,4 +60,22 @@ public class ClientController {
         return "redirect:/clients/" + client.getId();
     }
 
+    @RequestMapping("clients/edit/{id}")
+    public String edit(@PathVariable Integer id, Model model) {
+        model.addAttribute("client", clientService.getClientById(id));
+        return "clientform";
+    }
+
+    /**
+     * Delete product by its id.
+     *
+     * @param id
+     * @return
+     */
+    @RequestMapping("clients/delete/{id}")
+    public String delete(@PathVariable Integer id) {
+        clientService.deleteClient(id);
+        return "redirect:/clients";
+    }
+
 }
